@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block main_content%}
+точно удалить{{object.id}}?
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">ПОШЕЛ ОТ СЮДА!</button>
+</form>
+{%endblock%}

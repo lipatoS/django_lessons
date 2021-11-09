@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{%block main_content%}
+<a href="/rate/create">create rate</a></br>
+{%for i in message%}
+ID {{i.id}} NAME {{i.name}} SURNAME {{i.surname}}
+<a href="/rate/details/{{i.id}}">Details</a>
+<a href="/rate/update/{{i.id}}">UPDATE</a>
+<a href="/rate/delete/{{i.id}}">DELETE</a>
+</br>
+{%endfor%}
+{%endblock%}
