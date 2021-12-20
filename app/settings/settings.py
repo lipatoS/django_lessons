@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-osyy)yi$#n&p0__st$*0p4d(+qtsj#@!&0d6vljh*@rv-r^z$q'
+SECRET_KEY = 'django-insecure-osyy)yi$#n&p0!@#$%^&*(__st$*0p4d(+qtsj#@!&0d6vljh*@rv-r^z$q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,8 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'currency',
+    'accounts',
     'django_extensions',
     'debug_toolbar',
+    'rangefilter',
+    'import_export',
 
 ]
 
@@ -40,6 +43,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'currency.middlewares.ResponseTimeMW',
+    'currency.middlewares.GclidMW',
 ]
 
 ROOT_URLCONF = 'settings.urls'
@@ -117,3 +122,40 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# адрес компьютера
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+# порт 587
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'python.test.lipa@gmail.com'
+EMAIL_HOST_PASSWORD = 'Python12578'
+SUPPORT_EMAIL = 'python.test.lipa@gmail.com'
+CELERY_BROKER_URL = 'amqp://localhost'
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    "debug": {
+        "task": "currency.tasks.parse_privarbank",
+        "schedule": crontab(minute="*/1")
+    },
+    "1": {
+        "task": "currency.tasks.parse_kurs_com_ua",
+        "schedule": crontab(minute="*/1")
+    },
+    "2": {
+        "task": "currency.tasks.parse_finance_i_ua",
+        "schedule": crontab(minute="*/1")
+    },
+    "3": {
+        "task": "currency.tasks.parse_minfin_com_ua",
+        "schedule": crontab(minute="*/1")
+    },
+}
+AUTH_USER_MODEL = "accounts.User"
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')

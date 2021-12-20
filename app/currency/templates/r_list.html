@@ -1,11 +1,11 @@
 {%extends 'base.html'%}
 {%block main_content%}
-<a href="/rate/create">create rate</a></br>
-{%for i in message%}
+<a href="{%url 'rate-create'%}">create rate</a></br>
+{%for i in rate_list%}
 ID {{i.id}} NAME {{i.name}} SURNAME {{i.surname}}
-<a href="/rate/details/{{i.id}}">Details</a>
-<a href="/rate/update/{{i.id}}">UPDATE</a>
-<a href="/rate/delete/{{i.id}}">DELETE</a>
+<a href="{%url 'rate-details' pk=i.pk%}">Details</a>
+<a href="{%url 'rate-update' pk=i.pk%}">UPDATE</a>
+<a href="{%url 'rate-delete' pk=i.pk%}">DELETE</a>
 </br>
 {%endfor%}
 {%endblock%}

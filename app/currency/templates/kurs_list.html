@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%block main_content%}
+<a href="{%url 'rate-create2'%}">create rate</a></br>
+{%for i in rate2_list%}
+id:{{i.id}}
+</br>
+{{i.source}} {{i.type}}</br>
+продажа {{i.sale}}
+покупка {{i.buy}}
+</br>
+{{i.created}}
+</br>
+</br>
+<!--<a href="{%url 'rate-details2' pk=i.pk%}">Details</a>-->
+<!--<a href="{%url 'rate-update2' pk=i.pk%}">UPDATE</a>-->
+<!--<a href="{%url 'rate-delete' pk=i.pk%}">DELETE</a>-->
+{%endfor%}
+{%endblock%}
+<!--Rate2.objects.filter(type=currency_type, source=source).order_by("created").last()-->
+
+<!--id {{i.id}} {{i.type}} продажа {{i.sale}} покупка {{i.buy}} место {{i.source}}-->

@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block main_content%}
+login
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">вход</button>
+</form>
+{%endblock%}

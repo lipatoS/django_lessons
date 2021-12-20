@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block main_content%}
+contact us
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">шо там?</button>
+</form>
+{%endblock%}

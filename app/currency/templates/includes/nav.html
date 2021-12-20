@@ -1,14 +1,34 @@
-<div>
-  <div>
-    <a href="/">home</a>
-  </div>
-  <div>
-    <a href="/rate">rate</a>
-  </div>
-  <div>
-    <a href="/gen">gen</a>
-  </div>
-  <div>
-    <a href="#">login</a>
-  </div>
-</div>
+<table>
+    <tr>
+        <th><a href="{%url 'index'%}">home</a></th>
+        <th></th>
+        <th></th>
+        <th><a href="{%url 'contact_us_create'%}">contact_us</a></th>
+        <th></th>
+        <th></th>
+        <th><a href="{%url 'rate-list'%}">rate</a></th>
+        <th></th>
+        <th></th>
+        <th><a href="{%url 'rate-list2'%}">rate2</a></th>
+        <th></th>
+        <th></th>
+        <th><a href="{%url 'kurs-list'%}">Курсы валют</a></th>
+        <th></th>
+        <th></th>
+        <th><a href="/gen">gen</a></th>
+        {% if not request.user.is_authenticated%}
+            <th></th>
+            <th></th>
+            <th><a href="{%url 'login'%}">login</a></th>
+        {% else %}
+            <th></th>
+            <th></th>
+            {{request.user.email}}
+            <th></th>
+            <th></th>
+            <th><a href="{%url 'logout'%}">logout</a></th>
+            <th><a href="{%url 'accounts:my-profile' request.user.id %}">мой профиль</a></th>
+        {% endif %}
+    </tr>
+</table>
+</br>
