@@ -10,7 +10,6 @@ from currency.views import Rate2UpdateViews
 from currency.views import RateDetailViews
 from currency.views import Rate2DetailViews
 from currency.views import RateDeleteViews
-
 import debug_toolbar
 from django.conf import settings
 from django.urls import include, path

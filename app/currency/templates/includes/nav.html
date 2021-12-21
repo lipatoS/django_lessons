@@ -28,6 +28,7 @@
             <th></th>
             <th><a href="{%url 'logout'%}">logout</a></th>
             <th><a href="{%url 'accounts:my-profile' request.user.id %}">мой профиль</a></th>
+
         {% endif %}
     </tr>
 </table>

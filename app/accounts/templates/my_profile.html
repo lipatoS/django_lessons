@@ -4,6 +4,10 @@ my profile
 <form method="post">
     {%csrf_token%}
     {{form.as_p}}
-    <button type="submit">редактировать</button>
+    <a href="{%url 'accounts:change-password' request.user.id %}">изменить пароль</a>
+    </br>
+    </br>
+    </br>
+    <button type="submit">одтвердить</button>
 </form>
 {%endblock%}
