@@ -6,8 +6,10 @@ ID {{i.id}} NAME {{i.name}} SURNAME {{i.surname}}
 {% if request.user.is_authenticated%}
     <a href="{%url 'rate-details' pk=i.pk%}">Details</a>
 {% endif %}
+{% if request.user.is_superuser%}
 <a href="{%url 'rate-update' pk=i.pk%}">UPDATE</a>
 <a href="{%url 'rate-delete' pk=i.pk%}">DELETE</a>
+{% endif %}
 </br>
 {%endfor%}
 {%endblock%}
