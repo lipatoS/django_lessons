@@ -15,6 +15,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
+HTTP_SCHEMA = "http"
+DOMEN = "localhost:8000"
 
 INSTALLED_APPS = [
     # админская часть (база данных пользователя)
