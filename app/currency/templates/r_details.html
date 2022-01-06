@@ -1,10 +1,27 @@
 {%extends 'base.html'%}
 {%block main_content%}
-ID = {{object.id}}</br>
-name = {{object.name}}</br>
-surname = {{object.surname}}</br>
-salary = {{object.salary}}</br>
-state = {{object.state}}</br>
-child = {{object.child}}</br>
-date = {{object.date}}</br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">surname</th>
+      <th scope="col">salary</th>
+      <th scope="col">state</th>
+      <th scope="col">child</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{object.id}}</th>
+      <td>{{object.name}}</td>
+      <td>{{object.surname}}</td>
+      <td>{{object.salary}}</td>
+      <td>{{object.state}}</td>
+      <td>{{object.child}}</td>
+      <td>{{object.date}}</td>
+    </tr>
+  </tbody>
+</table>
 {%endblock%}

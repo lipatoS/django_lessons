@@ -2,7 +2,7 @@
 {%block main_content%}
 <a href="{%url 'rate-create2'%}">create rate</a></br>
 {%for i in rate2_list%}
-ID {{i.id}} {{i.get_type_display}} продажа {{i.sale}} покупка {{i.buy}}
+ID {{i.id}} {{i.get_type_display}} продажа {{i.sale}} покупка {{i.buy}} СОУС {{i.source}}
 <a href="{%url 'rate-details2' pk=i.pk%}">Details</a>
 <a href="{%url 'rate-update2' pk=i.pk%}">UPDATE</a>
 <!--<a href="{%url 'rate-delete' pk=i.pk%}">DELETE</a>-->
